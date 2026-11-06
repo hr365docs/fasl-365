@@ -14,7 +14,7 @@ const grades: Grade[] = [
   { name: 'Grade 9', phase: 'Secondary', n: 9, teacher: 'Aisha Karim', students: 26, subjects: 11, teachers: 13, score: 77, att: 94 },
   { name: 'Grade 10', phase: 'Secondary', n: 10, teacher: 'Omar Haddad', students: 28, subjects: 11, teachers: 14, score: 75, att: 94, live: true },
 ]
-
+ 
 const tabs: { label: string; test: (g: Grade) => boolean }[] = [
   { label: 'All', test: () => true },
   { label: 'Primary 1–5', test: g => g.phase === 'Primary' },
