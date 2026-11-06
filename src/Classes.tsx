@@ -1,19 +1,24 @@
 import { useState } from 'react'
 
-type Grade = { name: string; phase: 'Primary' | 'Middle' | 'Secondary' | 'Senior'; n: number; teacher: string; students: number; subjects: number; teachers: number; score: number; att: number; live?: boolean }
+type Grade = { name: string; phase: 'Primary' | 'Middle' | 'Secondary' | 'Senior'; n: number; teacher: string; students: number; subjects: number; teachers: number; score: number; att: number; trend: number; live?: boolean }
 
+// Totals match the summary cards: 327 students, 109 class subjects, avg score 74%, attendance 94%
 const grades: Grade[] = [
-  { name: 'Grade 1', phase: 'Primary', n: 1, teacher: 'Emily Watson', students: 28, subjects: 8, teachers: 11, score: 69, att: 94 },
-  { name: 'Grade 2', phase: 'Primary', n: 2, teacher: 'Emily Watson', students: 27, subjects: 8, teachers: 10, score: 70, att: 95 },
-  { name: 'Grade 3', phase: 'Primary', n: 3, teacher: 'Emily Watson', students: 29, subjects: 8, teachers: 10, score: 71, att: 96 },
-  { name: 'Grade 4', phase: 'Primary', n: 4, teacher: 'James Carter', students: 26, subjects: 8, teachers: 12, score: 72, att: 97 },
-  { name: 'Grade 5', phase: 'Primary', n: 5, teacher: 'James Carter', students: 30, subjects: 8, teachers: 12, score: 73, att: 90 },
-  { name: 'Grade 6', phase: 'Middle', n: 6, teacher: 'James Carter', students: 28, subjects: 9, teachers: 13, score: 74, att: 91 },
-  { name: 'Grade 7', phase: 'Middle', n: 7, teacher: 'Aisha Karim', students: 27, subjects: 11, teachers: 14, score: 75, att: 92 },
-  { name: 'Grade 8', phase: 'Middle', n: 8, teacher: 'Priya Nair', students: 29, subjects: 11, teachers: 14, score: 76, att: 93, live: true },
-  { name: 'Grade 9', phase: 'Secondary', n: 9, teacher: 'Aisha Karim', students: 26, subjects: 11, teachers: 13, score: 77, att: 94 },
-  { name: 'Grade 10', phase: 'Secondary', n: 10, teacher: 'Omar Haddad', students: 28, subjects: 11, teachers: 14, score: 75, att: 94, live: true },
+  { name: 'Grade 1', phase: 'Primary', n: 1, teacher: 'Emily Watson', students: 24, subjects: 6, teachers: 8, score: 82, att: 96, trend: 3 },
+  { name: 'Grade 2', phase: 'Primary', n: 2, teacher: 'Daniel Brooks', students: 26, subjects: 6, teachers: 8, score: 78, att: 95, trend: 1 },
+  { name: 'Grade 3', phase: 'Primary', n: 3, teacher: 'Sara Al Mansoori', students: 25, subjects: 7, teachers: 9, score: 85, att: 97, trend: 4 },
+  { name: 'Grade 4', phase: 'Primary', n: 4, teacher: 'James Carter', students: 28, subjects: 7, teachers: 10, score: 71, att: 93, trend: -2 },
+  { name: 'Grade 5', phase: 'Primary', n: 5, teacher: 'Fatima Rahman', students: 27, subjects: 8, teachers: 11, score: 76, att: 94, trend: 2 },
+  { name: 'Grade 6', phase: 'Middle', n: 6, teacher: 'Michael Chen', students: 29, subjects: 8, teachers: 11, score: 68, att: 91, trend: -3 },
+  { name: 'Grade 7', phase: 'Middle', n: 7, teacher: 'Aisha Karim', students: 30, subjects: 10, teachers: 13, score: 73, att: 92, trend: 1 },
+  { name: 'Grade 8', phase: 'Middle', n: 8, teacher: 'Priya Nair', students: 28, subjects: 11, teachers: 14, score: 80, att: 95, trend: 5, live: true },
+  { name: 'Grade 9', phase: 'Secondary', n: 9, teacher: 'Omar Haddad', students: 27, subjects: 11, teachers: 14, score: 66, att: 90, trend: -1 },
+  { name: 'Grade 10', phase: 'Secondary', n: 10, teacher: 'Layla Hassan', students: 26, subjects: 11, teachers: 14, score: 72, att: 93, trend: 2, live: true },
+  { name: 'Grade 11', phase: 'Senior', n: 11, teacher: 'Ryan Patel', students: 29, subjects: 12, teachers: 15, score: 71, att: 94, trend: 0 },
+  { name: 'Grade 12', phase: 'Senior', n: 12, teacher: 'Noura Al Suwaidi', students: 28, subjects: 12, teachers: 15, score: 70, att: 96, trend: 3 },
 ]
+
+const scoreTone = (s: number) => (s >= 80 ? 'good' : s >= 70 ? 'ok' : 'low')
  
 const tabs: { label: string; test: (g: Grade) => boolean }[] = [
   { label: 'All', test: () => true },
@@ -78,8 +83,18 @@ export default function Classes() {
                   <div><b>{g.subjects}</b><small>Subjects</small></div>
                   <div><b>{g.teachers}</b><small>Teachers</small></div>
                 </div>
-                <div className="class-bar"><i style={{ width: g.score + '%' }} /></div>
-                <small className="class-meta">Avg score {g.score}% · Attendance {g.att}%{g.live ? ' · Live data' : ''}</small>
+                <div className="class-score-row">
+                  <small>Avg score</small>
+                  <b className={'tone-' + scoreTone(g.score)}>{g.score}%</b>
+                  <em className={g.trend > 0 ? 'up' : g.trend < 0 ? 'down' : 'flat'} aria-label={`${g.trend > 0 ? 'up' : g.trend < 0 ? 'down' : 'no change'} ${Math.abs(g.trend)} points this term`}>
+                    {g.trend > 0 ? '▲' : g.trend < 0 ? '▼' : '–'} {Math.abs(g.trend)}%
+                  </em>
+                </div>
+                <div className={'class-bar tone-' + scoreTone(g.score)}><i style={{ width: g.score + '%' }} /></div>
+                <div className="class-meta">
+                  <span className={'class-att' + (g.att >= 95 ? ' high' : '')}>Attendance {g.att}%</span>
+                  {g.live && <span className="class-live"><i aria-hidden="true" />Live</span>}
+                </div>
               </div>
             </article>
           ))}

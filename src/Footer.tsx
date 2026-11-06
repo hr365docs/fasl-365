@@ -17,13 +17,13 @@ const columns: Group[][] = [
     { heading: 'Help', items: [{ label: 'FAQ', href: '#faq' }] },
   ],
   [
-    { heading: 'Company', items: [{ label: 'About Cubic Logics', href: 'https://www.cubiclogics.com/', external: true }, { label: 'Contact', href: 'mailto:info@fasl365.com' }] },
+    { heading: 'Company', items: [{ label: 'About Apps 365', href: 'https://www.apps365.com/', external: true }, { label: 'Contact', href: 'mailto:info@fasl365.com' }] },
     { heading: 'Customer', items: [{ label: 'Support', href: 'mailto:info@fasl365.com' }, { label: 'Book a conversation', href: 'mailto:info@fasl365.com' }] },
   ],
   [
+    { heading: 'UAE', lines: ['PO Box 342001', 'IFZA Business Park, Dubai'] },
     { heading: 'USA', lines: ['8, The Green, #11736', 'Dover, DE – 19901'] },
     { heading: 'Canada', lines: ['325, Front St W, #300, Toronto,', 'ON – M5V 2Y1'] },
-    { heading: 'UAE', lines: ['PO Box 342001', 'IFZA Business Park, Dubai'] },
   ],
 ]
 
@@ -36,9 +36,9 @@ const badgeGroups: Badge[][] = [
     { src: 'https://ik.imagekit.io/cubiclogics/Badge/Certified.png', alt: 'Microsoft Certified' },
   ],
   [
-    { src: 'https://ik.imagekit.io/cubiclogics/New%20badges/roi.png', alt: 'G2 Best ROI' },
-    { src: 'https://ik.imagekit.io/cubiclogics/New%20badges/Momentum.png', alt: 'G2 Momentum Leader' },
-    { src: 'https://ik.imagekit.io/cubiclogics/New%20badges/Support.png', alt: 'G2 Best Support' },
+    { src: 'https://www.apps365.com/wp-content/uploads/2025/03/CoreHR_HighPerformer_HighPerformer.svg', alt: 'G2 High Performer' },
+    { src: 'https://www.apps365.com/wp-content/uploads/2025/03/CustomerSelf-Service_MomentumLeader_Leader.svg', alt: 'G2 Momentum Leader' },
+    { src: 'https://www.apps365.com/wp-content/uploads/2025/03/CustomerSelf-Service_BestSupport_QualityOfSupport.svg', alt: 'G2 Best Support' },
   ],
   [
     { src: 'https://ik.imagekit.io/cubiclogics/Badge/Available.png', alt: 'Microsoft Azure Marketplace', wide: true },
@@ -82,7 +82,7 @@ export default function Footer() {
             <img src="/fasl365-mark-white.svg" alt="" className="footer-logo-img" />
             <span>Fasl365</span>
           </a>
-          <p className="footer-tagline">One platform for the whole school: classes, subjects, assessments, attendance and AI-assisted review, built by Cubic Logics.</p>
+          <p className="footer-tagline">One platform for the whole school: classes, subjects, assessments, attendance and AI-assisted review, built by Apps 365.</p>
         </div>
       </div>
 
@@ -96,7 +96,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom-bar">
-        <p className="footer-copyright">© 2026 – <a href="#top">Fasl365</a>. <a href="https://www.cubiclogics.com/" target="_blank" rel="noopener noreferrer">Cubic Logics</a>.</p>
+        <p className="footer-copyright">© 2026 – <a href="#top">Fasl365</a>. <a href="https://www.apps365.com/" target="_blank" rel="noopener noreferrer">Apps 365</a>.</p>
         <div className="footer-social-icons">
           {socials.map(s => (
             <a key={s.label} href={s.href} className="footer-icon" aria-label={s.label} target="_blank" rel="noopener noreferrer">
