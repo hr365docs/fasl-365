@@ -4375,3 +4375,50 @@ h1 {
         gap: 8px
     }
 }
+/* Scroll to top button */
+.scroll-top {
+    position: fixed;
+    right: max(16px, 1.667vw);
+    bottom: max(16px, 1.667vw);
+    z-index: 60;
+    width: max(44px, 3.333vw);
+    height: max(44px, 3.333vw);
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: var(--red);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0.833vw 1.736vw rgba(104, 18, 38, .28);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity .25s ease, transform .25s ease, visibility .25s, background .2s ease
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none
+}
+
+.scroll-top:hover {
+    background: #b10f2f;
+    transform: translateY(-3px)
+}
+
+.scroll-top:focus-visible {
+    outline: 3px solid #ffb018;
+    outline-offset: 3px
+}
+
+.scroll-top svg {
+    width: 45%;
+    height: 45%
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-top { transition: opacity .2s ease, visibility .2s }
+    .scroll-top:hover { transform: none }
+}

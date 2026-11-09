@@ -2,6 +2,7 @@ import { useState, type ReactNode } from 'react'
 import Footer from './Footer'
 import Classes from './Classes'
 import Glance from './Glance'
+import ScrollTop from './ScrollTop'
 
 const clientLogos: { src: string; alt: string; className?: string }[] = [
   { src: 'https://www.apps365.com/wp-content/uploads/2024/06/logo10-1.webp', alt: 'Client logo' },
@@ -64,7 +65,7 @@ function App() {
     <a className="skip-link" href="#main">Skip to content</a>
     <header className="site-header"><a href="#top" className="brand" aria-label="Fasl365 home"><img src="/fasl365-mark.svg" alt="" /><span>Fasl365</span></a><button className="menu-toggle" aria-expanded={menu} onClick={() => setMenu(!menu)}><span /><span /><span /><b className="sr-only">Menu</b></button><nav className={menu ? 'open' : ''}><a href="#platform">Platform</a><a href="#subjects">Subjects</a><a href="#features">Features</a><a href="#faq">FAQ</a><a className="nav-cta" href="mailto:info@fasl365.com">Talk to us</a></nav></header>
     <main id="main">
-      <section className="hero" id="top"><svg className="hero-burst" viewBox="0 0 400 400" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="5" strokeLinejoin="round"><path d="M200 8 252 98 350 60 322 162 410 214 318 258 330 360 238 322 200 410 162 322 70 360 82 258-10 214 78 162 50 60 148 98Z" /><path d="M200 70 238 138 306 112 288 180 346 214 286 246 296 312 232 288 200 350 168 288 104 312 114 246 54 214 112 180 94 112 162 138Z" /></svg><div className="hero-copy"><h1>A parent’s trust.<br />A school’s promise.</h1><div className="promise">Fasl365 keeps both.</div><p className="hero-text">Fasl365 gives schools one place to manage every grade level: classes, subjects, assessments, attendance and AI-assisted review. Part of the Apps 365 family of Microsoft 365 apps.</p><div className="hero-actions"><a className="button primary" href="mailto:info@fasl365.com">Book a conversation <span>↗</span></a><a className="text-link" href="#platform">Explore the platform ↓</a></div></div></section>
+      <section className="hero" id="top"><svg className="hero-burst" viewBox="-16 -4 432 432" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="5" strokeLinejoin="round"><path d="M200 8 252 98 350 60 322 162 410 214 318 258 330 360 238 322 200 410 162 322 70 360 82 258-10 214 78 162 50 60 148 98Z" /><path d="M200 70 238 138 306 112 288 180 346 214 286 246 296 312 232 288 200 350 168 288 104 312 114 246 54 214 112 180 94 112 162 138Z" /></svg><div className="hero-copy"><h1>A parent’s trust.<br />A school’s promise.</h1><div className="promise">Fasl365 keeps both.</div><p className="hero-text">Fasl365 gives schools one place to manage every grade level: classes, subjects, assessments, attendance and AI-assisted review. Part of the Apps 365 family of Microsoft 365 apps.</p><div className="hero-actions"><a className="button primary" href="mailto:info@fasl365.com">Book a conversation <span>↗</span></a><a className="text-link" href="#platform">Explore the platform ↓</a></div></div></section>
       <section className="trust-strip"><div><span>Parent</span><blockquote>“I trusted you with my child.”</blockquote><blockquote className="ar" lang="ar" dir="rtl">«لقد ائتمنتك على طفلي.»</blockquote></div><div><span>School</span><blockquote>“We trusted Fasl365 to help us keep that promise.”</blockquote><blockquote className="ar" lang="ar" dir="rtl">«لقد وثقنا في Fasl365 لمساعدتنا على الوفاء بذلك الوعد.»</blockquote></div></section>
       <Classes />
       <Glance />
@@ -77,6 +78,7 @@ function App() {
       <section className="cta-section"><div className="cta-copy"><p className="eyebrow">A clearer view starts here</p><h2>Bring your whole school<br /><em>onto one screen.</em></h2><p>Talk to the Fasl365 team about your grades, classes and school workflows.</p><div className="cta-actions"><a className="button magenta" href="mailto:info@fasl365.com">Contact Fasl365 <span>↗</span></a><a className="cta-ghost" href="#platform">Explore the platform</a></div><ul className="cta-points"><li>Classes &amp; subjects</li><li>Attendance</li><li>AI-assisted review</li></ul></div><div className="cta-motif" aria-hidden="true"><svg className="cta-burst" viewBox="0 0 400 400" fill="none" stroke="currentColor" strokeWidth="4" strokeLinejoin="round"><path d="M200 8 252 98 350 60 322 162 410 214 318 258 330 360 238 322 200 410 162 322 70 360 82 258-10 214 78 162 50 60 148 98Z" /><path d="M200 70 238 138 306 112 288 180 346 214 286 246 296 312 232 288 200 350 168 288 104 312 114 246 54 214 112 180 94 112 162 138Z" /></svg><span><Icon name="cap" /></span></div></section>
     </main>
     <Footer />
+    <ScrollTop />
   </>
 }
 export default App
